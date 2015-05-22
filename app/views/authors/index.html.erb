@@ -1,0 +1,16 @@
+<h3 class="page-header">
+  All Authors
+  <span class="pull-right">
+    <%= link_to "New Author", new_author_path, class: 'btn btn-sm btn-success' %>
+  </span>
+
+</h3>
+
+<ul>
+  <% @authors.each do |author| %>
+    <li>
+    	<%= link_to author.name, edit_author_url(author) %>
+    	<%= link_to "Delete", author_url(author), method: :delete, class: 'btn btn-sm btn-danger', data: {confirm: 'Seriously?'} %>
+    </li>
+  <% end %>
+</ul>

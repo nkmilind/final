@@ -1,0 +1,5 @@
+<p><b><%= @article.title %></p></b>
+<p><%= Author.find_by(id: @article.author_id).name %></p>
+<div class="well">
+<p><%= @article.first_few_lines %></p>
+</div>

@@ -1,0 +1,265 @@
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) [0m
+  [1m[35m (1.9ms)[0m  ALTER TABLE "articles" ADD "title" text
+  [1m[36m (1.3ms)[0m  [1mALTER TABLE "articles" ADD "date" date[0m
+  [1m[35m (1.3ms)[0m  ALTER TABLE "articles" ADD "publication_id" integer
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX "index_articles_on_publication_id" ON "articles" ("publication_id")
+  [1m[36m (1.2ms)[0m  [1mALTER TABLE "articles" ADD "author_id" integer[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_publication_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_publication_id' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_articles_on_author_id" ON "articles" ("author_id")[0m
+  [1m[35m (1.2ms)[0m  ALTER TABLE "articles" ADD "first_few_lines" text
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "articles" ADD "photo_url" text[0m
+  [1m[35m (1.2ms)[0m  ALTER TABLE "articles" ADD "category_id" integer
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_author_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_publication_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_publication_id' AND type='index'
+
+  [1m[36m (1.2ms)[0m  [1mCREATE  INDEX "index_articles_on_category_id" ON "articles" ("category_id")[0m
+  [1m[35m (1.8ms)[0m  CREATE TABLE "authors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mALTER TABLE "authors" ADD "name" varchar[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "publications" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mALTER TABLE "publications" ADD "name" varchar[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mALTER TABLE "categories" ADD "name" varchar[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_category_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_author_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_publication_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_publication_id' AND type='index'
+
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_category_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_author_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_articles_on_publication_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_articles_on_publication_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (1.4ms)[0m  DELETE FROM "articles"
+  [1m[36mSQL (1.2ms)[0m  [1mDELETE FROM "authors"[0m
+  [1m[35mSQL (1.1ms)[0m  DELETE FROM "publications"
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "categories"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "authors" ("name") VALUES (?)[0m  [["name", "Aditi Shah"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "authors" ("name") VALUES (?)  [["name", "K T Jagannathan"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.7ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "authors" ("name") VALUES (?)[0m  [["name", "Rishi Iyengar"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "authors" ("name") VALUES (?)  [["name", "None"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "publications" ("name") VALUES (?)[0m  [["name", "Time"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "publications" ("name") VALUES (?)  [["name", "The Hindu"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "publications" ("name") VALUES (?)[0m  [["name", "Live Mint"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "publications" ("name") VALUES (?)  [["name", "Firstpost"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "categories" ("name") VALUES (?)[0m  [["name", "Home"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "categories" ("name") VALUES (?)  [["name", "Politics"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "categories" ("name") VALUES (?)[0m  [["name", "Finance"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "categories" ("name") VALUES (?)  [["name", "Sports"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "categories" ("name") VALUES (?)[0m  [["name", "OpEd/Blogs"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "categories" ("name") VALUES (?)  [["name", "Entertainment"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "articles" ("title", "date", "publication_id", "author_id", "first_few_lines", "photo_url", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Bollywood divided over compulsory prime time screening of Marathi films in multiplexes"], ["date", "2015-07-04"], ["publication_id", 4], ["author_id", 4], ["first_few_lines", "In a move that is guaranteed to cause some degree of controversy.."], ["photo_url", "http://s1.firstpost.in/wp-content/uploads/2015/04/cinema.png"], ["category_id", 1]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "articles" ("title", "publication_id", "author_id", "first_few_lines", "photo_url", "category_id") VALUES (?, ?, ?, ?, ?, ?)  [["title", "Crowd-funded Indian ice hockey team geared up for Challenge Cup"], ["publication_id", 4], ["author_id", 4], ["first_few_lines", "The Indian ice hockey team is finally on its way to Kuwait for the Challenge Cup Division 1.."], ["photo_url", "http://s1.firstpost.in/wp-content/uploads/2015/04/IceHockey-gen-Getty1.jpg"], ["category_id", 4]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "articles" ("title", "publication_id", "author_id", "first_few_lines", "photo_url", "category_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "India's first smart city takes shape in GIFT"], ["publication_id", 3], ["author_id", 1], ["first_few_lines", "Gandhinagar: India's push to accommodate a booming urban population and attract investment.."], ["photo_url", "http://www.livemint.com/rf/Image-621x414/LiveMint/Period1/2015/04/16/Photos/gift%20city%20tower-k5j--621x414@LiveMint.jpg"], ["category_id", 1]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "articles" ("title", "publication_id", "author_id", "first_few_lines", "photo_url", "category_id") VALUES (?, ?, ?, ?, ?, ?)  [["title", "How Indian prices compare with those in the US"], ["publication_id", 3], ["author_id", 4], ["first_few_lines", "IDeutsche Bank's global strategist Sanjeev Sanyal has brought out a report, 'Random Walk: Mapping the World's Prices 2015'.."], ["photo_url", "http://www.livemint.com/rf/Image-621x414/LiveMint/Period1/2015/04/16/Photos/w_m2m_usprice.jpg"], ["category_id", 1]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "articles" ("title", "date", "publication_id", "author_id", "first_few_lines", "photo_url", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Flipkart & flipside"], ["date", "2015-07-04"], ["publication_id", 2], ["author_id", 2], ["first_few_lines", "Even as it pulled out of talks on joining Airtel Zero, native e-commerce major Flipkart asserted that it has always believed in the concept of Net Neutrality.."], ["photo_url", "http://www.thehindu.com/multimedia/dynamic/02368/flipkart_2368663g.jpg"], ["category_id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "articles" ("title", "publication_id", "author_id", "first_few_lines", "photo_url", "category_id") VALUES (?, ?, ?, ?, ?, ?)  [["title", "This Country Looks Like It Will Grow Faster Than China This Year"], ["publication_id", 4], ["author_id", 4], ["first_few_lines", "India's economic growth may surpass China's much sooner than initially expected.."], ["photo_url", "https://timedotcom.files.wordpress.com/2015/04/450697406.jpg?quality=65&strip=color&w=1100"], ["category_id", 3]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "articles"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "authors"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "publications"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "categories"[0m
+
+
+Started GET "/" for ::1 at 2015-05-15 21:33:21 -0500
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (3.0ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 2844ms (Views: 2773.7ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/articles/1" for ::1 at 2015-05-15 21:33:28 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArticle Load (0.3ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAuthor Load (0.6ms)[0m  [1mSELECT  "authors".* FROM "authors" WHERE "authors"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered articles/show.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 136ms (Views: 118.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/articles/new" for ::1 at 2015-05-15 21:33:44 -0500
+Processing by ArticlesController#new as HTML
+  [1m[35mCategory Load (0.7ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered articles/new.html.erb within layouts/application (77.4ms)
+Completed 200 OK in 163ms (Views: 161.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/articles" for ::1 at 2015-05-15 21:33:47 -0500
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"n5Go/gFXnrSNXvevAWhOq4ZKqLw2OHJWDUAEmaxhMR4ycOXCpNxqxuwufdmGiMFGulEOgcy27zVy3MXTzxVxbg==", "article"=>{"title"=>"", "date"=>"", "publication"=>"", "author"=>"", "first_few_lines"=>"", "photo_url"=>"", "category_id"=>"1"}, "button"=>""}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  app/controllers/articles_controller.rb:9:in `create'
+
+
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (17.2ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (110.2ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (82.1ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (182.6ms)
+
+
+Started GET "/articles/new" for ::1 at 2015-05-15 21:34:34 -0500
+Processing by ArticlesController#new as HTML
+  [1m[36mCategory Load (0.7ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered articles/new.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 99ms (Views: 88.6ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/articles" for ::1 at 2015-05-15 21:34:36 -0500
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1/VQyAF45+O5vQx1VLEsWtCDpjmFV8sDNyE/Ls2jdgV6FB30pPMTkdjNhgPTUaO37JgABH/ZVmBIvf5krtc2dQ==", "article"=>{"title"=>"", "date"=>"", "publication"=>"", "author"=>"", "first_few_lines"=>"", "photo_url"=>"", "category_id"=>"1"}, "button"=>""}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (3.5ms)[0m  [1mINSERT INTO "articles" DEFAULT VALUES[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 4.9ms)
+
+NameError (undefined local variable or method `articles_index_url' for #<ArticlesController:0x007f8e5e122868>):
+  app/controllers/articles_controller.rb:10:in `create'
+
+
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.1ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (84.3ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (71.8ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/milind/.rvm/gems/ruby-2.2.1/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (154.8ms)
+
+
+Started GET "/articles/new" for ::1 at 2015-05-15 21:34:58 -0500
+Processing by ArticlesController#new as HTML
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered articles/new.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 97ms (Views: 85.8ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/articles" for ::1 at 2015-05-15 21:35:00 -0500
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ok9+ExvCs7qyrmcBrxIGWo0zch2yO3yJiGvqyGmOI5SXrjMvvklHyNPe7Xco8om3sSjUIEi14er39yuCCvpj5A==", "article"=>{"title"=>"", "date"=>"", "publication"=>"", "author"=>"", "first_few_lines"=>"", "photo_url"=>"", "category_id"=>"1"}, "button"=>""}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "articles" DEFAULT VALUES[0m
+  [1m[35m (2.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 9ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/articles" for ::1 at 2015-05-15 21:35:00 -0500
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 83ms (Views: 82.0ms | ActiveRecord: 0.6ms)
