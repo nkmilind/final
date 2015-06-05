@@ -15,3 +15,9 @@ Publication:
 
 Category:
   name: string
+
+User:
+  name: string
+  email: string
+  password_digest: string
+  admin: boolean

@@ -46,3 +46,7 @@ flipkart_flipside = Article.create(title: "Flipkart & flipside", date: "4/7/2015
 growing_economy = Article.create(title: "This Country Looks Like It Will Grow Faster Than China This Year", date: "4/15/2015", publication_id: firstpost.id, author_id: none.id, first_few_lines: "India's economic growth may surpass China's much sooner than initially expected..", photo_url: "https://timedotcom.files.wordpress.com/2015/04/450697406.jpg?quality=65&strip=color&w=1100", category_id: finance.id)
 
 puts "There are now #{Article.count} articles, #{Author.count} authors, #{Publication.count} publications, and #{Category.count} categories in the database."
+
+# Create the User
+puts "Creating user..."
+milind = User.create(name: 'Milind', email: 'nk.milind@gmail.com', password: 'secret', admin: true )
